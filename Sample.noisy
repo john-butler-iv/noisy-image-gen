@@ -1,0 +1,55 @@
+#const H = 1080
+#const W = 1920
+
+canvas {
+	width W
+	height H
+}
+
+rectangle {
+	width W
+	height H
+
+	grad1x 0
+	grad1y 0
+	grad1color #052F5F
+
+	grad2x W
+	grad2y H
+	grad2color #06A77C
+
+	noiseType normal
+	// normal noise is centered on shape by default
+	// standard deviation is 1/4th of total size in each direction
+}
+
+ellipse {
+	centerX W / 2
+	centerY H / 2
+	radius 400
+
+	grad1x 0
+	grad1y H
+	grad1color #BA2E37
+
+	grad2x W
+	grad2y 0
+	grad2color #B57905
+
+
+	noiseType normal
+	// normal noise is centered on shape by default
+	// standard deviation is 1/4th of total size in each direction
+}
+
+noise {
+	// These are all default values:
+	// topX 0
+	// bottomX 0
+	// height H
+	// width W
+	
+	noiseType window
+	windowWidth 10
+	windowHeight 10
+}
