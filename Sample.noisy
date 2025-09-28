@@ -1,5 +1,8 @@
 #const H = 1080
+#const centerY = H / 2
 #const W = 1920
+#const centerX = W / 2
+#const minDimention = H
 
 canvas {
 	width W
@@ -7,49 +10,67 @@ canvas {
 }
 
 rectangle {
-	width W
-	height H
+	point1x 0
+	point1y 0
+	point2x W
+	point2y H
 
-	grad1x 0
-	grad1y 0
-	grad1color #052F5F
+	gradientPole1x 0
+	gradientPole1y 0
+	gradientPole1color #052F5F
 
-	grad2x W
-	grad2y H
-	grad2color #06A77C
+	gradientPole2x W
+	gradientPole2y H
+	gradientPole2color #06A77C
 
-	noiseType normal
+/*
+	noiseType GlobalNormal
 	// normal noise is centered on shape by default
 	// standard deviation is 1/4th of total size in each direction
+*/
 }
 
-ellipse {
-	centerX W / 2
-	centerY H / 2
+circle {
+	centerX centerX
+	centerY centerY
 	radius 400
 
-	grad1x 0
-	grad1y H
-	grad1color #BA2E37
+	gradientPole1x 0
+	gradientPole1y H
+	gradientPole1color #BA2E37
 
-	grad2x W
-	grad2y 0
-	grad2color #B57905
+	gradientPole2x W
+	gradientPole2y 0
+	gradientPole2color #B57905
 
-
-	noiseType normal
+/*
+	// noiseClippingMode postClip
+	noiseType GlobalNormal
 	// normal noise is centered on shape by default
 	// standard deviation is 1/4th of total size in each direction
+*/
 }
 
-noise {
-	// These are all default values:
-	// topX 0
-	// bottomX 0
-	// height H
-	// width W
+rectangle {
+	point1x 0
+	point1y 0
+	point2x H
+	point2y W
 	
-	noiseType window
-	windowWidth 10
-	windowHeight 10
+/*
+	noiseType NormalOffset
+	noiseClippingMode afterMerge
+	// noiseClippingMode clipped | beforeMerge | afterMerge
+
+	swapDensity 25
+
+	normalMeanX centerX
+	normalMeanY centerY
+	normalStandardDeviationX W / 4
+	normalStandardDeviationY H / 4
+
+	offsetStandardDeviation minDimention / 100 
+*/
 }
+
+
